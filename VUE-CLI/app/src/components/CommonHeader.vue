@@ -1,5 +1,6 @@
 <template>
-    <div class="header" :style="{background:$store.state.color}">   
+    <div class="header" :style="{background:$store.state.color}">
+        <button @click="goHome()">首页</button>
         {{$store.state.title}}
     </div>
 </template>

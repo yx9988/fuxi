@@ -23,14 +23,39 @@
       }
     },
     created(){
-      axios.get('https://bird.ioliu.cn/v1?url=https://douban.uieee.com/v2/movie/in_theaters?start=0&count=10')
+      // axios.get('https://bird.ioliu.cn/v1?url=https://douban.uieee.com/v2/movie/in_theaters?start=0&count=10')
+      axios.get('./data/movie0.json')
       .then((res)=>{
         console.log(res.data);
         this.movieList=res.data.subjects;
-
-      }).catch((res)=>{
-        console.log(res);
+      }).catch((err)=>{
+        console.log(err);
       })
+      window.onscroll=function(){
+        var scrollTop=document.documentElement.scrollTop||document.boby.scrollTop;
+        var clientHeight=document.documentElement.clientHeight||document.boby.clientHeight;
+        var scrollHeight=document.documentElement.scrollHeight||document.body.scrollHeight;
+        console.log(scrollHeight,scrollTop ,clientHeight);
+          if( Math.abs(scrollHeight - scrollTop - clientHeight) <1 ){
+            this.getMovieList(this.movieList.length);
+          }
+      }
+    },
+    methods:{
+      getMovieList(num){
+        this.isShow=true;
+        if(this.flag){
+          this.flag=false;
+          axios.get('./data/movie10.json')
+          .then((res)=>{
+          this.movieList = [...this.movieList,...res.data.subjects];
+          this.isShow = false;
+          this.flag = true; //可请求  
+        }).catch((err)=>{
+          onsole.log(err);
+        })
+        }
+      }
     }
   }
 </script>
@@ -41,7 +66,8 @@
     .movieList{
         display: flex;
         img{
-            width:2rem;
+            width:1rem;
+            height: 1.9rem;
             margin-right:0.2rem;
         }
         margin-bottom:0.2rem;
