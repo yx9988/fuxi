@@ -1,0 +1,72 @@
+/* header 开始 */
+#header{
+    height: 30px;
+    background: #f2f2f2;
+    line-height: 30px;
+    
+}
+#header>span{
+    padding-left: 100px;
+    
+}
+.header-word{
+    float: right;
+    padding-right:150px
+}
+.header-list{
+    height: 100px;
+    background: #ccc;
+
+}
+.header-list img{
+    height: 100px;
+    padding-left:100px ;
+}
+.list-arrow{
+    height: 100px;
+    float:right;
+    list-style: none;
+    line-height:110px;
+    padding-right:150px ;
+    
+}
+.list-arrow li{
+    float:left;
+    padding: 0 20px;
+}
+.list-arrow a{
+    text-decoration: none;
+}
+/*轮播图*/
+.slide-box{
+    height: 500px;
+    background: #fcfcfc;
+    
+}
+.slide-box .wrapper{
+    height: 500px;
+    
+    position: relative;
+}
+.menu-box{
+    position: absolute;
+    height: 500px;
+    width: 200px;
+    background: rgba(0,0,0,0.5);
+    
+}
+.menu-title{
+    background: red;
+}
+.main-list a{
+    height: 40px;
+    
+    text-decoration: none;
+}
+.img-box {
+    height: 500px;
+    overflow:hidden;
+}
+.img-box  img{
+    width:1230px;
+}
