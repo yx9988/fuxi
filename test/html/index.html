@@ -17,7 +17,6 @@
         <span class="header-word">少儿编程少儿编程少儿编程</span>
     </div>
     <div class="header-list">
-        <img src="../image/1.jpg" alt="">
         <ul class="list-arrow">
             <li>
                 <a href="#">首页</a>
@@ -34,44 +33,96 @@
         </ul>
     </div>   
 <!--轮播图-->
-    <div class="slide-box">
-        <div class="wrapper">
-            <div class="menu-box">
-                <h3 class="menu-title">
+<div class="slide-box">
+    <div class="wrapper">
+        <div class="menu-box">
+            <h3 class="menu-title">
+                <span class="iconfont icon-remen">
                     热门课程
-                </h3>
-                <ul class="main-list-box">
-                    <li class="main-list">
-                        <a href="">1</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">2</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">3</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">4</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">5</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">6</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">7</a>
-                    </li>
-                    <li class="main-list">
-                        <a href="">8</a>
-                    </li>
-                </ul>
-            </div>
-        
-            <div class="img-box">
-                <img src="../image/img01.webp" alt="">
-            </div>
+                </span>
+            </h3>
+            <ul>
+                <li class="main-list">
+                    <span class="iconfont icon-java-script">
+                        <a href="">JavaScript </a>
+                    </span>
+                </li>
+                <li class="main-list">
+                    <span class="iconfont icon-C">
+                        <a href="">C++ </a> 
+                    </span"></li>
+                <li class="main-list">
+                    <span class="iconfont icon-c">
+                         <a href="">C </a>
+                    </span">
+                </li>
+                <li class="main-list">
+                    <span class="iconfont icon-java">
+                        <a href="">Java </a>
+                    </span>
+                </li>
+                <li class="main-list">
+                    <span class="iconfont icon-icon--"">
+                        <a href="">Python </a>
+                    </span>
+                </li>
+                <li class="main-list">
+                    <span class="iconfont icon-dashuju">
+                        <a href="">大数据</a>
+                    </span>
+                </li>
+                <li class="main-list">
+                        <span class="iconfont icon-php"">
+                            <a href="">PHP</a>
+                        </span>
+                </li>
+                <li class="main-list">
+                        <span class="iconfont icon-qianrushi">
+                            <a href="">嵌入式</a>
+                        </span>
+                </li>
+                <li class="main-list">
+                        <span class="iconfont icon-yunjisuan">
+                            <a href="">云计算</a>
+                        </span>
+                </li>
+            </ul>
         </div>
+        <div class="img-box">
+            <a href="#" class="selected">
+                <img src="../image/TB1_JXrLVXXXXbZXVXXSutbFXXX.jpg" alt="">
+            </a> 
+            <a href="#">
+                <img src="https://img.alicdn.com/tps/i4/TB1VlowjED1gK0jSZFGSuvd3FXa.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../image/TB1W4nPJFXXXXbSXpXXSutbFXXX.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="https://img.alicdn.com/tps/i4/TB1VlowjED1gK0jSZFGSuvd3FXa.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../image/TB1_JXrLVXXXXbZXVXXSutbFXXX.jpg" alt="">
+            </a>
+        </div>
+        <ul class="btn">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
+</div>
+<script src="../jquery-1.12.4.js"></script>
+<script>
+    $('.btn li').on('click',function(){
+        $(this).addClass('active').siblings().removeClass('active');
+        //找到索引对应的图片显示
+        var index = $(this).index();
+        $('.img-box a').eq(index).addClass('selected').siblings().removeClass('selected');
+    })
+
+</script>
 </body>
 </html>
