@@ -33,8 +33,8 @@
         </ul>
     </div>   
 <!--轮播图-->
-<div class="slide-box">
-    <div class="wrapper">
+<div id="slide-box">
+    <div id="wrapper">
         <div class="menu-box">
             <h3 class="menu-title">
                 <span class="iconfont icon-remen">
@@ -88,7 +88,8 @@
                 </li>
             </ul>
         </div>
-        <div class="img-box">
+        <div id="container">
+        <div id="img-box">
             <a href="#" class="selected">
                 <img src="../image/TB1_JXrLVXXXXbZXVXXSutbFXXX.jpg" alt="">
             </a> 
@@ -105,7 +106,7 @@
                 <img src="../image/TB1_JXrLVXXXXbZXVXXSutbFXXX.jpg" alt="">
             </a>
         </div>
-        <ul class="btn">
+        <ul id="btn">
             <li class="active"></li>
             <li></li>
             <li></li>
@@ -113,15 +114,49 @@
             <li></li>
         </ul>
     </div>
+    </div>
 </div>
-<script src="../jquery-1.12.4.js"></script>
+
 <script>
-    $('.btn li').on('click',function(){
-        $(this).addClass('active').siblings().removeClass('active');
-        //找到索引对应的图片显示
-        var index = $(this).index();
-        $('.img-box a').eq(index).addClass('selected').siblings().removeClass('selected');
-    })
+    var oContainer=document.getElementById('container');
+    var oBtnBox=document.getElementById('btn');
+    var aBtns = oBtnBox.getElementsByTagName('li');
+    var oImgBox=document.getElementById('img-box');
+    var aImg=oImgBox.getElementsByTagName('a');
+    var iNow = 0;
+    for(var i=0;i<aBtns.length;i++){
+        aBtns[i].idx=i;
+        aBtns[i].onclick=function(){
+                change(this.idx);
+                iNow=this.idx;
+        }
+    }
+    oNext.onclick=function(){
+        iNow++;
+        if(iNow==aBtns.length){
+            iNow=0;
+        }
+        change(iNow)
+    }
+
+    function change (index){
+        for(var i=0;i<aBtns.length;i++){
+            aBtns[i].className="";
+            aImg[i].className="";
+        }
+        aBtns[index].className = "active";
+            aImg[index].className = "selected";
+    }
+
+
+
+    var timer=setInterval(oNext.onclick,1000);
+    oContainer.onmouseout = function(){
+        timer = setInterval(oNext.onclick,1000);
+    }
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+    }
 
 </script>
 </body>
