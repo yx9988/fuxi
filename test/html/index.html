@@ -50,11 +50,12 @@
                 <li class="main-list">
                     <span class="iconfont icon-C">
                         <a href="">C++ </a> 
-                    </span"></li>
+                    </span>
+                </li>
                 <li class="main-list">
                     <span class="iconfont icon-c">
                          <a href="">C </a>
-                    </span">
+                    </span>
                 </li>
                 <li class="main-list">
                     <span class="iconfont icon-java">
@@ -62,7 +63,7 @@
                     </span>
                 </li>
                 <li class="main-list">
-                    <span class="iconfont icon-icon--"">
+                    <span class="iconfont icon-icon--">
                         <a href="">Python </a>
                     </span>
                 </li>
@@ -72,7 +73,7 @@
                     </span>
                 </li>
                 <li class="main-list">
-                        <span class="iconfont icon-php"">
+                        <span class="iconfont icon-php">
                             <a href="">PHP</a>
                         </span>
                 </li>
@@ -113,6 +114,10 @@
             <li></li>
             <li></li>
         </ul>
+        <ul id="arrow-box">
+            <li id="prev">&lt;</li>
+            <li id="next">&gt;</li>
+        </ul>
     </div>
     </div>
 </div>
@@ -122,6 +127,7 @@
     var oBtnBox=document.getElementById('btn');
     var aBtns = oBtnBox.getElementsByTagName('li');
     var oImgBox=document.getElementById('img-box');
+    var oNext = document.getElementById('next');
     var aImg=oImgBox.getElementsByTagName('a');
     var iNow = 0;
     for(var i=0;i<aBtns.length;i++){
@@ -136,7 +142,7 @@
         if(iNow==aBtns.length){
             iNow=0;
         }
-        change(iNow)
+        change(iNow);
     }
 
     function change (index){
@@ -145,7 +151,7 @@
             aImg[i].className="";
         }
         aBtns[index].className = "active";
-            aImg[index].className = "selected";
+        aImg[index].className = "selected";
     }
 
 
