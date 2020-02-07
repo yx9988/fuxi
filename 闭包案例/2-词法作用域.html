@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>词法作用域</title>
+</head>
+<body>
+    <script>
+        //词法作用域：指函数在定义或声明他们的作用域里运行
+        // 而不是在执行或调用他们的作用域里运行
+        var value=1;
+        // 被声明
+        function foo(){ 
+            alert(value);
+        }
+        // 被调用
+        function bar(){
+            var value=2;
+            foo();
+        }
+        bar();
+    </script>
+</body>
+</html>

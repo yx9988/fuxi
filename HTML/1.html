@@ -5,8 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+        #div1::after{
+            content: '';
+            height: 52px;
+            width: 45px;
+            background: #eee;
+        }
+        #div2{
+            width: 50px;
+            height: 50px;
+            background: red;
+            display: none;
+        }
+    
+        #div1:hover #div2{
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
+    <script>
+        var age=prompt("请输入你的年龄！","");
+        var liveSeconds=age*365*24*3600;
+        alert("你已经度过了"+liveSeconds+"秒");
+    </script>
     
 </body>
 </html>

@@ -8,7 +8,16 @@
 </head>
 <body>
     <script>
-       alert( Math.random(1,4))
+        function foo(){
+            var name="john";
+            var age=23;
+            function bar(){
+                console.log(name)
+            }
+            return bar;
+        }
+        var baz=foo();
+        baz();
     </script>
 </body>
 </html>

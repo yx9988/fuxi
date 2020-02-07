@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    webkit-font-smoothing: antialiased;
+}
+#wrapper{
+    margin: 0 auto;
+    width: 1230px;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+.arrow{
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border:3px solid transparent;
+    border-top:3px solid #bbb;
+    position: absolute;
+    right:8px;
+    top:15px;
+    transition:transform 0.2s linear;
+}
