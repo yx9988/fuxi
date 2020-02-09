@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style:none;
+    }
+    #container{
+        width: 750px;
+        margin:100px auto;
+        position: relative;
+        overflow: hidden;
+        height: 291px;
+    }
+    #img-box{
+        width: 4500px;
+        position: absolute;
+        top:0;
+        left: 0;
+        overflow: hidden;
+        /* transition: left 2s linear ; */
+    }
+    #img-box a{
+        float:left;
+    }
+    #img-box a img{
+        display: block;
+    }
+    #btn-box{
+        position: absolute;
+        right:10px;
+        bottom:10px;
+    }
+    #arrow-box{
+        position: absolute;
+        left:10px;
+        bottom:10px;
+    }
+    #btn-box li , #arrow-box li{
+        float:left;
+        width: 20px;
+        height: 20px;
+        margin-right:5px;
+        background: rgba(0,0,0,0.8);
+        border-radius:5px;
+        line-height:20px;
+        text-align: center;
+        color:#fff;
+        font-size:12px;
+        cursor: pointer;
+    }
+    #btn-box .active{
+        background: #ff0036;
+    }
+</style>
+<body>
+    <div id="container">
+        <div id="img-box">
+            <a href="#">
+                <img src="../DOM/images/1.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../DOM/images/2.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../DOM/images/3.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../DOM/images/4.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../DOM/images/5.jpg" alt="">
+            </a>
+            <a href="#">
+                <img src="../DOM/images/1.jpg" alt="">
+            </a>
+        </div>
+        <div id="btn-box">
+            <ul>
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+        <div id="arrow-box">
+            <ul>
+                <li id="prev">&lt</li>
+                <li id="next">&gt</li>
+            </ul>
+        </div>
+    </div>
+    <script src="../DOM/jslib.js"></script>
+    <script>
+        var oContainer=document.getElementById('container');
+        var oBtnBox=document.getElementById('btn-box');
+        var aBtns=oBtnBox.getElementsByTagName('li');
+        var oImgBox=document.getElementById('img-box');
+        var aImg=oImgBox.getElementsByTagName('a');
+        var oPrev=document.getElementById('prev');
+        var oNext=document.getElementById('next');
+        var iNow=0;
+
+        // for(var i=0;i<aBtns.length;i++){
+        //     aBtns[i].index=i;
+        //     aBtns[i].onclick=function(){
+        //         for(var j=0;j<aBtns.length;j++){
+        //             aBtns[j].className='';
+        //         }
+        //         this.className='active'
+        //         oImgBox.style.left=-this.index*750+"px";
+        //     }
+        // }
+
+        oNext.onclick=function(){
+            iNow++;
+            if(iNow==aImg.length){
+                //切换到第一张图片
+                oImgBox.style.left='0';
+                //显示索引是1的图片
+                iNow=1;
+            }
+            for(var j=0;j<aBtns.length;j++){
+                aBtns[j].className='';
+            }
+            aBtns[iNow==5?0:iNow].className='active';
+            //动画
+            animate(oImgBox,{
+                left:-iNow*750
+            });
+        }
+
+        var timer=setInterval(function(){
+            oNext.onclick();
+        },2000)
+    </script>
+</body>
+</html>
