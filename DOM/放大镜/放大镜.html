@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #small-box , #big-box{
+        width: 400px;
+        height: 400px;
+        float:left;
+        overflow: hidden;
+    }
+    #small-box{
+        position: relative;
+    }
+    #drag{
+        width: 200px;
+        height: 200px;
+        background:rgba(255,255,255,0.5);
+        position: absolute;
+        left: 0;
+        top: 0;
+        display:none;
+    }
+    #big-box{
+        display: none;
+        position: relative;
+    }
+    #big-img{
+        position: absolute;
+        left:0;
+        top: 0;
+    }
+</style>
+<body>
+    <div id="img-box">
+        <div id="small-box">
+            <img src="./img/1.jpg" alt="">
+            <span id="drag"></span>
+        </div>
+        <div id="big-box">
+            <img id='big-img' src="./img/2.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oDrag=document.getElementById('drag');
+        var oSmallBox=document.getElementById('small-box');
+        var oBigBox=document.getElementById('big-box');
+        var oBigImg=document.getElementById('big-img');
+
+        //鼠标划入，拖拽框  大图 出现
+        oSmallBox.onmouseover=function(){
+            oDrag.style.display='block';
+            oBigBox.style.display='block';
+        }
+
+        //鼠标划出，拖拽狂  大图 消失
+        oSmallBox.onmouseout=function(){
+            oDrag.style.display='none';
+            oBigBox.style.display='none';
+        }
+
+        //拖拽框跟着鼠标走   定位   取到鼠标位置
+        oSmallBox.onmousemove=function(e){
+            oDrag.style.left=e.clientX-oDrag.offsetWidth/2+'px';
+            oDrag.style.top=e.clientY-oDrag.offsetHeight/2+'px';
+
+            //判断边界 左  右  上  下  
+            if(oDrag.offsetLeft<=0){
+                oDrag.style.left=0;
+            }
+            var maxLeft=oSmallBox.offsetWidth-oDrag.offsetWidth;
+            if(oDrag.offsetLeft>=maxLeft){
+                oDrag.style.left=maxLeft+'px';
+            }
+            if(oDrag.offsetTop<=0){
+                oDrag.style.top=0;
+            }
+            var maxTop=oSmallBox.offsetHeight-oDrag.offsetHeight;
+            if(oDrag.offsetTop>=maxTop){
+                oDrag.style.top=maxTop+'px';
+            }
+
+
+            //大图移动
+            //能走的水平最大距离
+            var SmallDisX=oSmallBox.offsetWidth-oDrag.offsetWidth;
+            var BigDisX=oBigImg.offsetWidth-oBigBox.offsetWidth;
+
+            oBigImg.style.left=-BigDisX*oDrag.offsetLeft/SmallDisX+'px';
+
+            //能走的垂直最大距离
+            var SmallDisY=oSmallBox.offsetHeight-oDrag.offsetHeight;
+            var BigDisY=oBigImg.offsetHeight-oBigBox.offsetHeight;
+
+            oBigImg.style.top=-BigDisY*oDrag.offsetTop/SmallDisY+'px';
+        }
+    </script>
+</body>
+</html>
