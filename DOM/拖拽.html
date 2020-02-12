@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #div{
+        width: 200px;
+        height: 200px;
+        background: #ff0036;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+<body>
+    <div id="div"></div>
+    <script>
+        var oDiv=document.getElementById('div');
+        oDiv.onmousedown=function(e){
+            //鼠标点击时距离div左侧距离
+            var xDis=e.clientX-oDiv.offsetLeft;
+            //鼠标点击时距离div顶部距离
+            var yDis=e.clientY-oDiv.offsetTop;
+            document.onmousemove=function(e){
+                //div随着鼠标
+                oDiv.style.left=e.clientX-xDis+'px';
+                oDiv.style.top= e.clientY-yDis+'px';
+
+                //判断边界
+                if(oDiv.offsetLeft<0){
+                    oDiv.style.left=0;
+                }
+                if(oDiv.offsetTop<0){
+                    oDiv.style.top=0;
+                }
+                //取整个界面宽度/长度  document.documentElement.clientWidth/Height
+                var xMax=document.documentElement.clientWidth-oDiv.offsetWidth;
+                if(oDiv.offsetLeft>xMax){
+                    oDiv.style.left=xMax+'px';
+                }
+                var yMax=document.documentElement.clientHeight-oDiv.offsetHeight;
+                if(oDiv.offsetTop>yMax){
+                    oDiv.style.top=yMax+'px';
+                }
+            }
+        }
+        oDiv.onmouseup=function(){
+            document.onmousemove='';
+        }
+    </script>
+</body>
+</html>
