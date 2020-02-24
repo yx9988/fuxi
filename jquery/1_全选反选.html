@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" value="足球">足球
+    <input type="checkbox" value="篮球">篮球
+    <input type="checkbox" value="羽毛球">羽毛球
+    <input type="checkbox" value="乒乓球">乒乓球
+
+    <button id="CheckedAll">全选</button>
+    <button id="CheckedNo">全不选</button>
+    <button id="CheckedRev">反选</button>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $('#CheckedAll').on('click',function(){
+            $(':checkbox').prop('checked',true)
+        })
+
+        $('#CheckedNo').on('click',function(){
+            $(':checkbox').prop('checked',false)
+        })
+
+        $('#CheckedRev').on('click',function(){
+            //循环
+            $(':checkbox').each(function(index,elem){
+                //jq语法
+                // $(elem).prop('checked',!$(elem).prop('checked'))
+                //原生语法
+                elem.checked=!elem.checked
+            })
+        })
+
+    </script>
+</body>
+</html>
