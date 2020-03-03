@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 v-show="flag">{{msg}}</h2>
+        <div v-show="flag">请登录</div>
+        <div v-show="flag">zhangsan</div>
+        <button @click="change()">click</button>
+    </div>  
+    <script src="vue.js"></script>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                msg:"111",
+                flag:true,
+            },
+            methods:{
+                change(){
+                    this.flag=!this.flag
+                }
+            }
+        })
+    </script>  
+</body>
+</html>

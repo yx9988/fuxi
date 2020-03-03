@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>{{msg}}</span>
+        <!-- <button v-on:click="msg=222">click</button> -->
+        <!-- <button v-on:click="change(333)">click</button> -->
+        <button @click="msg=222">click</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let xx=new Vue({
+            el:"#app",
+            data:{
+               msg:'111' 
+            },
+            methods:{
+            change(val){
+                this.msg=val
+            } 
+            }
+        })
+    </script>
+</body>
+</html>

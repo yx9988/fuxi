@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            background: red;
+        }
+        .b{
+            color: green;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--:class={class名:boolean} 对象形式 v-bind简写  ：bind -->
+       <div v-bind:class="{a:isA,b:isB}">asdasffgg</div>
+        <!--:class = [classA,classB] 数组形式  -->
+       <div v-bind:class="[classA,classB]">asdasffgg</div> 
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            isA:true,
+            isB:false,
+            classA:'a',
+            classB:'b'
+        }
+    })
+</script>
+</html>

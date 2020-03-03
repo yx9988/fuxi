@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 400px;
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            height: 50px;
+            line-height: 50px;
+            background: #ccc;
+            margin-bottom: 10px;
+            padding: 10px 10px;
+        }
+        .close{
+            float: right;
+        }
+        .pink{
+            background: #ff0036;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>TodoList</h2>
+        <hr>
+        <div>
+            <label for="proName">名称</label>
+            <input type="text" id="proName" placeholder="请输入商品名称" v-model="name">
+            <label for="proPrice">价格</label>
+            <input type="text" id="proPrice" placeholder="请输入商品价格" v-model="price">
+            <button @click="add()">添加</button>
+        </div>
+        <div>
+            <input type="text" placeholder="请输入搜索内容" v-model="searchValue">
+            <button @click="search">搜索</button>
+        </div>
+        <ul>
+            <li v-for="(product,index) in proList" @click="change(product)" :class="{pink:product.isChecked}" v-show="product.isShow">
+                <input type="checkbox" v-model="product.isChecked">
+                <span>{{product.proName}}</span>
+                <span>{{product.proPrice}}</span>
+                <span class="close" @click.stop="del(index)">[X]</span>
+            </li>
+        </ul>
+        <div>
+            <button @click="delAll()">删除选中</button>
+            <span>总价 :{{total()}}</span>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+                proList:[
+                    {
+                        proName:"苹果",
+                        proPrice:1000,
+                        isChecked:false,
+                        isShow:true
+                    },
+                    {
+                        proName:"三星",
+                        proPrice:2000,
+                        isChecked:false,
+                        isShow:true
+                    }
+                ],
+                name:'',
+                price:'',
+                searchValue:''
+            },
+            methods:{
+                add(){
+                    if(this.name && this.price){
+                        this.proList.push({proName:this.name,proPrice:this.price*1,isChecked:false,isShow:true});
+                        this.name='';
+                        this.price='';
+                    }
+                },
+                change(product){
+                    product.isChecked=!product.isChecked;
+                },
+                total(){
+                    let sum=0;
+                    this.proList.forEach(function(product){
+                        if(product.isChecked){
+                            sum+=product.proPrice;
+                        }
+                    })
+                    return sum;
+                },
+                del(index){
+                    this.proList.splice(index,1);
+                },
+                delAll(){
+                    let arr=this.proList.filter(function(product){
+                        return !product.isChecked;
+                    })
+                    this.proList=[...arr]
+                },
+                search(){
+                    this.proList.forEach((product) =>{
+                        if(product.proName.includes(this.searchValue)){
+                            product.isShow=true;
+                        }else{
+                            product.isShow=false;
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

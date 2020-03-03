@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- .stop阻止事件冒泡 -->
+        <!-- .prevent阻止默认行为 -->
+        <!-- <a href="http://www.baidu.com" @click.prevent="fn()">baidu</a> -->
+        <a href="http://www.baidu.com" @click="fn()">baidu</a>
+        <button @click.once="fn1()">btn</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let vm=new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+                fn(){
+                    console.log("hahah")
+                },
+                fn1(){
+                    console.log("1111")
+                }
+            }
+        })
+    </script>
+</body>
+</html>
