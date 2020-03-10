@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #dialog{
+            width: 400px;
+            height: 300px;
+            border:1px solid #000;
+            padding: 10px 10px;
+            margin: 50px auto;
+        }
+        #dialog-title{
+            border-bottom: 1px solid #ccc;
+            height: 30px;
+            /* line-height: 30px; */
+        }
+        .close{
+            float: right;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="loginShow=true">登录</button>
+        <button @click="regShow=true">注册</button>
+        <my-dialog title="登录" v-show="loginShow">
+            用户名:<input type="text">
+            <br>
+            密码:<input type="text">
+            <br>
+            <button>登录</button>
+        </my-dialog>
+        <my-dialog title="注册" v-show="regShow">
+            用户名:  <input type="text">
+            <br>
+            密码:    <input type="text">
+            <br>
+            确认密码:<input type="text">
+            <br>
+            <button>注册</button>
+        </my-dialog>
+    </div>
+    <template id="temp">
+        <div id="dialog" v-show="isShow">
+            <div id="dialog-title">
+                <span>{{title}}</span>
+                <span class="close" @click="dialogClose()">[X]</span>
+            </div>
+            <div id="dialog-content">
+                <slot></slot>
+            </div>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                loginShow:false,
+                regShow:false
+            },
+            components:{
+                "myDialog":{
+                    template:"#temp",
+                    props:["title"],
+                    data(){
+                        return{
+                            isShow:true
+                        }
+                    },
+                    methods:{
+                        dialogClose(){
+                            this.isShow=false;
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component val="111">
+            <span>这是占位slot</span>
+            <h1 slot="h">hhhhhh</h1>
+            <p slot="p">ppppp</p>
+        </my-component>
+        <my-component val="222">
+            <span>这也是占位</span>
+        </my-component>
+        <my-component val="333">
+            <span>这还是占位</span>
+        </my-component>
+    </div>
+    <template id="temp">
+        <div>
+            <h2>{{val}}</h2>
+            <slot></slot>
+            <slot name="p"></slot>
+            <p>{{count}}</p>
+            <slot name="h"></slot>
+            <button @click="add()">add</button>
+            
+        </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script>
+        //全局组件
+
+        new Vue({
+            el:"#app",
+            components:{
+                "myComponent":{
+                    template:"#temp",
+                    props:['val'],
+                    data(){
+                        return{
+                            count:0
+                        }
+                    },
+                    methods:{
+                        add(){
+                            this.count++;
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
