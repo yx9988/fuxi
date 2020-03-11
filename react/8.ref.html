@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <script type="text/babel">
+        //父组件
+        class Dad extends React.Component{
+            render(){
+                return(
+                    <div>
+                        //直接操作DOM写法
+                        <input type="text" ref="name"/>
+                        <button onClick={()=>{console.log(this.refs.name.value)}}>click</button>
+
+
+                        //官方推荐写法 不直接操作DOM
+                        <input type="text" ref={(input)=>this.myInput=input}/>
+                        <button onClick={()=>{console.log(this.myInput.value)}}>click</button> 
+                    </div>
+                )
+            }
+        }
+
+        //点击取input中的值  ref
+
+        ReactDOM.render(
+            <Dad></Dad>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

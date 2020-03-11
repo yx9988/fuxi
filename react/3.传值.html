@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <script type="text/babel">
+        const Welcome=(props)=>{
+            return(
+                <div>
+                    <h2>{props.content}</h2>
+                    {props.children}
+                    <p>welcome!{props.name}</p>    
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <Welcome name="world" content="jkhkdfsfk"><h1>4843513</h1></Welcome>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

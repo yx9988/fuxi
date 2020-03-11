@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="browser.min.js"></script>
+
+    <script type="text/babel">
+        class Welcome extends React.Component{
+            //存数据
+            constructor(){
+                super();
+                this.state={
+                    num:100
+                }
+                //改变自定义方法中的this指向
+                this.add=this.add.bind(this);
+            }
+
+            add(){
+                this.setState({
+                    num:this.state.num+4
+                })
+            }
+
+            render(){
+                return(
+                    <div>
+                        <h1>数量：{this.state.num}</h1>
+                        <button onClick={this.add}>add</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Welcome></Welcome>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
