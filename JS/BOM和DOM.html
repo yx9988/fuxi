@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            width: 130px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+        .coral{
+            background: coral;
+        }
+    </style>
+</head>
+<body>
+    <p id="test">hello 2020</p>
+    <script>
+    // <!-- <p id="p01">152</p>
+    // <p>152</p>
+    // <p class="coral">255</p>
+   
+    // var p01  =  document.getElementById('p01')
+    // alert(p01.innerHTML) -->
+
+    
+    //获取元素对象
+
+    var ptest=document.getElementById('test')
+
+    //获取元素对象的内容
+
+    var msg=ptest.innerHTML;
+    
+    
+    //改变元素对象的内容
+    ptest.innerHTML=<i> hello 2021</i>
+
+    alert(msg)
+    </script>
+</body>
+</html>
