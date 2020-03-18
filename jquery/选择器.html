@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3{
+            margin:0;
+        }
+        div,p{
+            padding: 10px;
+            margin:10px;
+            border:1px solid gray;
+            width: 100px;
+            height: 100px;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h3>jQuery全局选择器示例</h3>
+    <div id="div1">
+        我是div1
+    </div>
+    <div class="div2">
+        我是div2
+    </div>
+    <p>我是p</p> -->
+
+    <ul id="item">
+        <li>AAA</li>
+        <li>BBB</li>
+        <li>CCC</li>
+    </ul>
+    
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        
+        $(document).ready(function(){
+            //全局选择器
+            // $("*").css("border","5px solid red");
+            // //元素选择器
+            // $("p").css("border","2px solid green");
+            // //ID选择器
+            // $("#div1").css("border","3px solid blue");
+            // //类选择器
+            // $(".div2").css("border","4px solid yellow")
+
+            $("ul#item li:nth-child(2n+1)").css("color","red")
+
+            
+        })
+
+    </script>
+</body>
+</html>

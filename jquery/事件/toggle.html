@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="toggle">隐藏/显示</button>
+    <p>测试阶段</p>
+    <script src="../jquery-1.12.4.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#toggle").click(function(){
+                $("p").toggle(3000);
+            })
+        })
+    </script>
+</body>
+</html>

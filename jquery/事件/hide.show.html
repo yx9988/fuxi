@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="hide1">隐藏</button>
+    <button id="show1">显示</button>
+    <p id="test1">测试段落1</p>
+    <script src="../jquery-1.12.4.js"></script>
+
+    <script>
+        $(document).ready(function(){
+        //    $("#hide1").click(function(){
+        //     $("#test1").hide();
+        //    })
+        //    $("#show1").click(function(){
+        //        $("#test1").show();
+        //    })
+
+           $("#hide1").click(function(){
+            $("#test1").hide(3000);
+           })
+           $("#show1").click(function(){
+               $("#test1").show(2000);
+           })
+        })
+    </script>
+</body>
+</html>

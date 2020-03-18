@@ -14,11 +14,20 @@
 </style>
 <body>
     <div id="red"></div>
+    <h1 id="msg">20171068</h1>
+    <button id="btn">change</button>
     <script>
-        var oRed=document.getElementById('red');
-        oRed.onclick=function(e){
-            console.log(e.clientX,e.clientY);
-        }
+        // var oRed=document.getElementById('red');
+        // oRed.onclick=function(e){
+        //     console.log(e.clientX,e.clientY);
+        // }
+        var oBtn=document.getElementById('btn');
+        var oMsg=document.getElementById('msg');
+
+        oBtn.onclick=function(){
+            oMsg.innerHTML=54232
+        } 
+        
     </script>
 </body>
 </html>

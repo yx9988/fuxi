@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>文本框<input type="text"></p>
+    <p>按键状态: <span id="tip">没有按键</span></p>
+    <p>按键次数: <span id="total">0</span></p>
+    <script src="../jquery-1.12.4.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //触发keydown事件
+            $("input:text").keydown(function(){
+                $("span#tip").text("按键被按下");
+            });
+            //触发keyup事件
+            $("input:text").keyup(function(){
+                $("span#tip").text("按键被释放");
+            });
+            //触发keypress事件
+            var count=0;
+            $("input:text").keypress(function(){
+                count++;
+                $("span#total").text(count);
+            })
+        })
+    </script>
+</body>
+</html>
